@@ -1,5 +1,5 @@
 import { Model, Schema, model, connect, connection } from "mongoose";
-import { hashSync, compareSync } from "bcrypt";
+import { hashSync, compareSync } from "bcryptjs";
 
 import { nameField, passwordField, questionField, answerField } from "@/lib/attributes";
 
@@ -16,7 +16,7 @@ export interface IUser extends Timestamps {
 }
 
 export interface IUserMethods {
-  comparePassword(data: string | Buffer): boolean;
+  comparePassword(data: string): boolean;
 }
 
 export type UserModel = Model<IUser, {}, IUserMethods>;
@@ -71,7 +71,7 @@ if (connection.readyState === 0) {
     }
   );
 
-  userSchema.method("comparePassword", function (data: string | Buffer) {
+  userSchema.method("comparePassword", function (data: string) {
     return compareSync(data, this.password);
   });
 
