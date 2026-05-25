@@ -19,11 +19,7 @@ export default function HomePage() {
             header: "What is this?",
             content: (
               <p>
-                This is a{" "}
-                <a href="https://nextjs.org" target="_blank" rel="noreferrer" className={actionClassName}>
-                  Next.js
-                </a>{" "}
-                where users can create polls and everyone can vote in them.
+                This is a Next.js demo where users can create polls and everyone can vote in them.
               </p>
             )
           },
