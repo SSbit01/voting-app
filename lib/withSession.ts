@@ -1,43 +1,36 @@
-import { withIronSessionApiRoute, withIronSessionSsr } from "iron-session/next"
-import type { NextApiHandler, GetServerSideProps } from "next"
+import { withIronSessionApiRoute, withIronSessionSsr } from "iron-session/next";
+import type { NextApiHandler, GetServerSideProps } from "next";
 
-
-if (!process.env.COOKIE_PASSWORD) throw "COOKIE_PASSWORD environment variable is not defined!"
-
+if (!process.env.COOKIE_PASSWORD) throw "COOKIE_PASSWORD environment variable is not defined!";
 
 const sessionOptions = {
   password: process.env.COOKIE_PASSWORD,
   cookieName: process.env.COOKIE_NAME || "voting-app_cookie",
   cookieOptions: {
-    secure: process.env.NODE_ENV == "production",
+    secure: process.env.NODE_ENV == "production"
   }
-}
-
+};
 
 export function withSessionRoute(handler: NextApiHandler) {
-  return withIronSessionApiRoute(handler, sessionOptions)
+  return withIronSessionApiRoute(handler, sessionOptions);
 }
-
 
 export function withSessionSsr(handler: GetServerSideProps) {
-  return withIronSessionSsr(handler, sessionOptions)
+  return withIronSessionSsr(handler, sessionOptions);
 }
-
 
 export interface UserCookie {
-  name?: string
-  id?: string
+  name?: string;
+  id?: string;
 }
-
 
 export interface VotesCookie {
-  [key: string]: string
+  [key: string]: string;
 }
-
 
 declare module "iron-session" {
   interface IronSessionData {
-    user?: UserCookie
-    votes?: VotesCookie
+    user?: UserCookie;
+    votes?: VotesCookie;
   }
 }

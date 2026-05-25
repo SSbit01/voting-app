@@ -1,36 +1,34 @@
-import Head from "next/head"
-import { SWRConfig } from "swr"
+import Head from "next/head";
+import { SWRConfig } from "swr";
 
-import fetcher from "@/lib/fetchJson"
+import fetcher from "@/lib/fetchJson";
 
-import AppWrapper from "@/components/Context"
-import NavBar from "@/components/NavBar"
+import AppWrapper from "@/components/Context";
+import NavBar from "@/components/NavBar";
 
-import type { AppProps } from "next/app"
+import type { AppProps } from "next/app";
 
-import "@/styles/globals.css"
-
-
+import "@/styles/globals.css";
 
 export default function AppPage({ Component, pageProps }: AppProps) {
-
   const title = "Voting App by SSbit01",
-        description = "A Next.js platform where users can create polls and everyone can vote in them",
-        themeColor = "#193250"
-
+    description = "A Next.js platform where users can create polls and everyone can vote in them",
+    themeColor = "#193250";
 
   return (
     <>
       <Head>
-
         <title>{title}</title>
 
         <meta charSet="utf-8" />
-        <meta name="viewport" content="minimum-scale=1,initial-scale=1,width=device-width,shrink-to-fit=no,user-scalable=no,viewport-fit=cover" />
+        <meta
+          name="viewport"
+          content="minimum-scale=1,initial-scale=1,width=device-width,shrink-to-fit=no,user-scalable=no,viewport-fit=cover"
+        />
         <meta name="application-name" content={title} />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <meta name="apple-mobile-web-app-title" content={title}/>
+        <meta name="apple-mobile-web-app-title" content={title} />
         <meta name="description" content={description} />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
@@ -48,24 +46,22 @@ export default function AppPage({ Component, pageProps }: AppProps) {
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
-
       </Head>
 
-
-      <SWRConfig value={{
-        fetcher,
-        onError(err) {
-          console.error(err)
-        }
-      }}>
+      <SWRConfig
+        value={{
+          fetcher,
+          onError(err) {
+            console.error(err);
+          }
+        }}
+      >
         <AppWrapper>
-
           <NavBar />
 
           <Component {...pageProps} />
-
         </AppWrapper>
       </SWRConfig>
     </>
-  )
+  );
 }

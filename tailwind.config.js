@@ -1,10 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
 module.exports = {
-  content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}"
-  ],
+  content: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       keyframes: {
@@ -17,9 +14,7 @@ module.exports = {
       animation: {
         bar: "bar .4s ease-out"
       }
-    },
+    }
   },
-  plugins: [
-    require("@tailwindcss/forms")
-  ]
-}
+  plugins: [require("@tailwindcss/forms")]
+};
