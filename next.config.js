@@ -1,8 +1,10 @@
+const development = process.env.NODE_ENV === "development";
+
 const DEFAULT_HEADERS = [
   {
     key: "Content-Security-Policy",
     value:
-      "base-uri 'self';connect-src 'self' blob:;default-src 'self';frame-ancestors 'none';frame-src 'self' https:;font-src 'self';form-action 'self';img-src 'self' blob: data:;object-src 'none';script-src 'self' 'unsafe-inline';script-src-attr 'none';style-src 'self' 'unsafe-inline';upgrade-insecure-requests"
+      `base-uri 'self';connect-src 'self' blob: https://vitals.vercel-insights.com;default-src 'self';frame-ancestors 'none';frame-src 'self' https:;font-src 'self';form-action 'self';img-src 'self' blob: data:;object-src 'none';script-src 'self' 'unsafe-inline'${development ? " 'unsafe-eval'" : ""};script-src-attr 'none';style-src 'self' 'unsafe-inline';upgrade-insecure-requests`
   },
   {
     key: "Cross-Origin-Opener-Policy",

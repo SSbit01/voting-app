@@ -7,6 +7,8 @@ const sessionOptions = {
   password: process.env.COOKIE_PASSWORD,
   cookieName: process.env.COOKIE_NAME || "voting-app_cookie",
   cookieOptions: {
+    httpOnly: true,
+    path: "/",
     secure: process.env.NODE_ENV == "production"
   }
 };
