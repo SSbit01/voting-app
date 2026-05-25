@@ -18,7 +18,7 @@ export default function HomePage() {
             {
               header: "What is this?",
               content: (
-                <p>This is a <a href="https://nextjs.org" target="_blank" rel="noreferrer" className={actionClassName}>Next.js</a> platform created by <a href="https://ssbit01.github.io/"  target="_blank" rel="noreferrer" className={actionClassName}>SSbit01</a> where users can create polls and everyone can vote in them.</p>
+                <p>This is a <a href="https://nextjs.org" target="_blank" rel="noreferrer" className={actionClassName}>Next.js</a> where users can create polls and everyone can vote in them.</p>
               )
             },
             {
@@ -53,6 +53,15 @@ export default function HomePage() {
                       Repository
                     </a>
                   </p>
+                </>
+              )
+            },
+            {
+              header: "Privacy",
+              content: (
+                <>
+                  <p>This website is hosted on Vercel and utilizes MongoDB Atlas deployed in the AWS eu-west-1 region.</p>
+                  <p>No personal data is collected or sold.</p>
                 </>
               )
             },
